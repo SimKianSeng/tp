@@ -1,6 +1,7 @@
 package seedu.address.model.assignment;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
@@ -9,6 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.assignment.exceptions.AssignmentNotFoundException;
 import seedu.address.model.assignment.exceptions.DuplicateAssignmentException;
+import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
 
 /**
  * A list of assignments that does not allow nulls.
@@ -46,6 +49,20 @@ public class AssignmentList implements Iterable<Assignment> {
         return internalUnmodifiableList;
     }
 
+    public void setAssignment(Assignment target, Assignment editedAssignment) {
+        requireAllNonNull(target, editedAssignment);
+
+        int index = internalList.indexOf(target);
+        if (index == -1) {
+            throw new AssignmentNotFoundException();
+        }
+
+        if (!target.isAlreadyAssigned(editedAssignment) && contains(editedAssignment)) {
+            throw new DuplicateAssignmentException();
+        }
+
+        internalList.set(index, editedAssignment);
+    }
 
     /**
      * Sets the given list of assignments to the current list
