@@ -57,6 +57,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
 
+    /**
+     * Updates assignments with the edited Person details.
+     */
     public void updateAssignments(Person before, Person after) {
         List<Assignment> assignmentsToChange = new ArrayList<>();
         for (Assignment a : assignments) {
@@ -76,6 +79,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
     }
 
+    /**
+     * Removes assignments with the assigned person equivalent to {@code toDelete}
+     */
     public void updateAssignments(Person toDelete) {
         List<Assignment> assignmentsToDelete = new ArrayList<>();
         for (Assignment a : assignments) {

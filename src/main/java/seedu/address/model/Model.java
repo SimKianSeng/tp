@@ -130,7 +130,13 @@ public interface Model {
      */
     void updateFilteredAssignmentList(Predicate<Assignment> predicate);
 
+    /**
+     * Updates the assignments' assigned person after editing a Person.
+     */
     void updateAssignments(Person before, Person after);
 
+    /**
+     * Deletes assignment with the assigned person deleted.
+     */
     void updateAssignments(Person toDelete);
 }
