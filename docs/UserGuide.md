@@ -227,6 +227,8 @@ Format: `delete INDEX`
 
 - Do not panic, entering `y` following it will delete proceed to delete the specified entry, while entering anything else will default to cancelling the operation.
 
+- Deleting a person will result the person assigned to an assignment to be deleted as well.
+
 </div>
 
 - Deletes the person at the specified `INDEX`.
@@ -388,6 +390,10 @@ Autocomplete provides suggestions based on your command history as you type. You
 ### Saving the data
 
 Match data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+### Data cascading
+
+As `persons` and `assignments` list are related performing actions on one of the lists will result changes to be cascaded to ensure data consistency. 
 
 ### Editing the data file
 
