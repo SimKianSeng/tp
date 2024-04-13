@@ -50,6 +50,15 @@ public class JsonAdaptedAssignment {
         final Availability modelAvailability = availability.toModelType();
         final AssignmentDetails modelDetails = new AssignmentDetails(details);
 
+        if (person == null) {
+            throw new IllegalValueException(String.format(Person.class.getSimpleName(), Person.class.getSimpleName()));
+        }
+        if (availability == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Availability.class.getSimpleName()));
+        }
+        if (details == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, AssignmentDetails.class.getSimpleName()));
+        }
 
         return new Assignment(modelPerson, modelDetails, modelAvailability);
     }
